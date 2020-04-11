@@ -31,12 +31,12 @@ class TestBasic < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
-  def test_mode_defined
-    precondition = ARGV.replace(["sandbox", "browserstack", "one", "2"])
-    expected = "browserstack"
-    actual = Basic.mode
-    assert_equal expected, actual
-  end
+  # def test_mode_defined
+  #   precondition = ARGV.replace(["sandbox", "browserstack", "one", "2"])
+  #   expected = "browserstack"
+  #   actual = Basic.mode
+  #   assert_equal expected, actual
+  # end
 
   def test_browserset_default
     precondition = ARGV.replace(Array.new)
@@ -103,37 +103,37 @@ class TestBasic < Test::Unit::TestCase
 
   #test_teardown omitted
 
-  def test_getbrowserlist_default
-    expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"]
-    actual = Basic.get_browserlist(nil, nil)
-    assert_equal expected, actual
-  end
+  # def test_getbrowserlist_default
+  #   expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"]
+  #   actual = Basic.get_browserlist(nil, nil)
+  #   assert_equal expected, actual
+  # end
 
-  def test_getbrowserlist_one
-    precondition = ARGV.replace(["sandbox", "browserstack", "one", "1"])
-    expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"]
-    actual = Basic.get_browserlist("one", "1")
-    assert_equal expected, actual
-  end
+  # def test_getbrowserlist_one
+  #   precondition = ARGV.replace(["default", "browserstack", "one", "1"])
+  #   expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"]
+  #   actual = Basic.get_browserlist("one", "1")
+  #   assert_equal expected, actual
+  # end
 
-  def test_getbrowserlist_random
-    precondition = ARGV.replace(["sandbox", "browserstack", "random", "2"])
-    actual = Basic.get_browserlist("random", "1 2 4")
-    assert_equal 1, actual.count
-  end
+  # def test_getbrowserlist_random
+  #   precondition = ARGV.replace(["default", "browserstack", "random", "2"])
+  #   actual = Basic.get_browserlist("random", "1 2 4")
+  #   assert_equal 1, actual.count
+  # end
 
-  def test_getbrowserlist_select
-    precondition = ARGV.replace(["sandbox", "browserstack", "select", "1 4"])
-    expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"] << Hash["os" => "Windows", "os_version" => "8", "browser" => "Firefox"]
-    actual = Basic.get_browserlist("select", "1 4")
-    assert_equal expected, actual
-  end
+  # def test_getbrowserlist_select
+  #   precondition = ARGV.replace(["default", "browserstack", "select", "1 4"])
+  #   expected = Array.new << Hash["os" => "OS X", "os_version" => "Sierra", "browser" => "Chrome"] << Hash["os" => "Windows", "os_version" => "8", "browser" => "Firefox"]
+  #   actual = Basic.get_browserlist("select", "1 4")
+  #   assert_equal expected, actual
+  # end
 
-  def test_getbrowserlist_all
-    precondition = ARGV.replace(["sandbox", "browserstack", "all"])
-    actual = Basic.get_browserlist("all", nil)
-    assert_equal 6, actual.count
-  end
+  # def test_getbrowserlist_all
+  #   precondition = ARGV.replace(["default", "browserstack", "all"])
+  #   actual = Basic.get_browserlist("all", nil)
+  #   assert_equal 6, actual.count
+  # end
 
   #test_runtest omitted
 

@@ -7,9 +7,9 @@ require_relative "../steps/frontend_order_steps"
 class FrontendScenario
 
   def guest_order
-    Report.title("guest customer orders product (base-2)")
-    Report.description("the simplest way for a customer to order a product, as a guest, without separate shipping address, using all defaults")
-    Report.preconditions("base-2 checkout; products have no inventory or shipping limitations")
+    Report.title("guest customer orders product")
+    Report.description("the simplest way for a customer to order a product")
+    Report.preconditions("products have no inventory or shipping limitations")
 
     #Steps which describe the scenario
     step = NavHome.new

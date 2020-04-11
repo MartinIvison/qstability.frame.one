@@ -5,16 +5,16 @@ require_relative '../helpers/debug.rb'
 
 class TestVerify < Test::Unit::TestCase
 
-  def test_address
-    actual = Generate.address("aus")
-    assert_instance_of(Hash, actual)
-    assert_equal 5, actual.count
-    assert actual["street"]
-    assert actual["city"]
-    assert actual["state"]
-    assert actual["state_code"]
-    assert actual["zip"]
-  end
+  # def test_address
+  #   actual = Generate.address("aus")
+  #   assert_instance_of(Hash, actual)
+  #   assert_equal 5, actual.count
+  #   assert actual["street"]
+  #   assert actual["city"]
+  #   assert actual["state"]
+  #   assert actual["state_code"]
+  #   assert actual["zip"]
+  # end
 
   def test_birthday
     actual = Generate.birthday
@@ -62,19 +62,19 @@ class TestVerify < Test::Unit::TestCase
     assert_equal 12, actual.length
   end
 
-  def test_email
-    expected = /^.*\+\d*@gmail.com$/
-    actual = Generate.email
-    assert_match expected, actual
-  end
+  # def test_email
+  #   expected = /^.*\+\d*@gmail.com$/
+  #   actual = Generate.email
+  #   assert_match expected, actual
+  # end
 
-  def test_uniquecustomer
-    actual = Generate.unique_customer("us")
-    assert_instance_of(Hash, actual)
-    assert_equal 7, actual.count
-    assert actual["first"]
-    assert actual["last"]
-  end
+  # def test_uniquecustomer
+  #   actual = Generate.unique_customer("us")
+  #   assert_instance_of(Hash, actual)
+  #   assert_equal 7, actual.count
+  #   assert actual["first"]
+  #   assert actual["last"]
+  # end
 
   def test_inputdate_today
     expected = Date.today.strftime("%m") + "/" + Date.today.strftime("%d") + "/" + Date.today.strftime("%Y")
