@@ -32,7 +32,7 @@ class TestBasic < Test::Unit::TestCase
   end
 
   # def test_mode_defined
-  #   precondition = ARGV.replace(["sandbox", "browserstack", "one", "2"])
+  #   precondition = ARGV.replace(["default", "browserstack", "one", "2"])
   #   expected = "browserstack"
   #   actual = Basic.mode
   #   assert_equal expected, actual
