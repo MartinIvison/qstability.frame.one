@@ -46,13 +46,11 @@ Write the missing secrets file:
 1. Run `ruby unit_test.rb`
 
 ## Design and Abilities
-- Structure: basic framework built on capybara, siteprism, selenium webdriver
-- Structure: modular test taxonomy (suites, scenarios, steps), and separate object management and object taxonomy (site, page, section, element)
-- Structure: common helper functions for setup and tear-down, data generation, error handling, reporting, verification, object treatment etc
-- Structure: ability to vary environments, accounts and run-time settings from settings, environments and accounts yaml files.
+- Basic framework built on capybara, siteprism, selenium webdriver
+- Modular test taxonomy (suites, scenarios, steps), and separate object management and object taxonomy (site, page, section, element)
+- Common helper functions for setup and tear-down, data generation, error handling, reporting, verification, object treatment etc
+- Ability to vary environments, accounts and run-time settings from settings, environments and accounts yaml files.
 - Reporting: basic result reporting in console, and ability to run in debug mode
 - Error Handling: retry, handling of hard errors and saving screenshots on failure
-- Integration: ability to vary browsers and test headless (poltergeist/phantomjs)
-- Integration: ability to run on **Browserstack** (single and multiple browsers in sequence) via "browserstack" commandline argument
-- Integration: ability to run test from **Jenkins** build (on build server, or on Browserstack) via Rake task, and ability to stability-test on Jenkins.
-- Containerization in **Docker**, and ability to be run from **CircleCI** against Browserstack.
+- Ability to vary browsers and test headless (poltergeist/phantomjs)
+- Ability to run on **Browserstack** (single and multiple browsers in sequence) via "browserstack" commandline argument
