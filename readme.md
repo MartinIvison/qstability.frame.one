@@ -1,8 +1,5 @@
-This is an **automated test suite** to test for a **minimum viable product (MVP)**. It is run on every **merge to platform master** and every **Frosty deploy** to check for regression on the most critical functionality of our product.
+This is a **shell automated test suite** to test against web apps. It is written in Ruby and architected around SitePrism (built on Capybara) and uses Selenium to talk to a variety of web-drivers (Browserstack, Chromedriver etc.).
 
-It is written in Ruby and architected around SitePrism (built on Capybara) and uses Selenium to talk to a variety of web-drivers (Browserstack, Chromedriver etc.).
-
-For more context, see the general [test automation strategy](https://winedirect.atlassian.net/wiki/display/VP/Test+Automation+Strategy) in Confluence.
 
 ## 1. Docker Installation
 The Docker image contains enough to run the tests against Browserstack, but currently no other drivers or targets (e.g. chromedriver for Chrome, or geckodriver for Firefox).
@@ -10,14 +7,7 @@ The Docker image contains enough to run the tests against Browserstack, but curr
   - Login: `docker login`
   - Pull image: `docker pull vin65/mvp:latest`
   - Start container: `docker run --rm -ti vin65/mvp:latest /bin/bash`
-2. Write the missing secrets file:
-  - Create the secrets file: `echo >> 'settings/accounts.yaml'`
-  - Get the latest accounts file from LastPass (search for MVP automation secrets)
-  - Install a text editor: `apt-get update && \ apt-get -y install nano`
-  - Open the new accounts file in the text editor: `nano settings/accounts.yaml`
-  - Copy the content into the file, save and exit.
-3. Run tests:
-  - Type `rake test` (or other run commands, see below) to run tests in Browserstack
+
 
 ## 2. Manual Installation
 1. Clone or download repo.
@@ -28,21 +18,38 @@ At this point you will be able to run the tests in Browserstack, but not in loca
 - Firefox: `brew install geckodriver`
 - Chrome: `brew install chromedriver` (to update: `brew upgrade chromedriver`)
 
-## Run
-1. Run `ruby test.rb` (with default suite and default settings)
+## 3. Create Secrets
+4. Write the missing secrets file:
+  - Create the secrets file: `echo >> 'settings/accounts.yaml'`
+  - Install a text editor: `apt-get update && \ apt-get -y install nano`
+  - Open the new accounts file in the text editor: `nano settings/accounts.yaml`
+  - Copy the following content into the file, save and exit:
+
+  ```#unit-test
+  unit-test:
+    value: true
+
+  #browserstack credentials
+  Browserstack:
+    key:
+    user:
+    ```
+
+## 4. Run tests
+1. Type `rake test` or `ruby test.rb` (with default suite and default settings)
 2. To specify which test suite to run, modify or create a test suite in `suites`. Then run `ruby test.rb "suite-name"`.
 3. To set specific run settings, like environment and browser-mode, modify or add a named settings block in `settings/settings.yaml` (e.g. 'jenkins')
 4. To run with specific settings, set add the settings argument, as follows: `test.rb "suite-name" "settings-name" "bs mode" "bs number(s)"`. Examples:
 - ruby test.rb  - without arguments, runs default suite with default settings (settings.yaml)
-- ruby test.rb "sandbox"  - runs sandbox suite with default settings
-- ruby test.rb "default" "jenkins"  - runs default suite with jenkins settings
+- ruby test.rb "default"  - runs default suite with default settings
+- ruby test.rb "default" "default"  - runs default suite with default settings
 - ruby test.rb "default" "browserstack"  - browserstack without arguments runs on the first browser in the list (browsers.yaml)
 - ruby test.rb "default" "browserstack" "all"  - runs on all browserstack
 - ruby test.rb "default" "browserstack" "one" "2"  - runs on browser 2 in the list
 - ruby test.rb "default" "browserstack" "select" "2 3 4"  - runs on browsers 2,3,4
 - ruby test.rb "default" "browserstack" "random" "1 2 6"  - runs on a random browsers from the list specified in the argument
 
-## Run Unit Tests
+## 4. Run Unit Tests
 1. Run `ruby unit_test.rb`
 
 ## Design and Abilities
@@ -56,6 +63,3 @@ At this point you will be able to run the tests in Browserstack, but not in loca
 - Integration: ability to run on **Browserstack** (single and multiple browsers in sequence) via "browserstack" commandline argument
 - Integration: ability to run test from **Jenkins** build (on build server, or on Browserstack) via Rake task, and ability to stability-test on Jenkins.
 - Containerization in **Docker**, and ability to be run from **CircleCI** against Browserstack.
-
-## Next steps and known weaknesses
-- see [QA Automation Kanban board](https://winedirect.atlassian.net/secure/RapidBoard.jspa?rapidView=15)
