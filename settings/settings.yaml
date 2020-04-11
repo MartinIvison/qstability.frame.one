@@ -1,0 +1,19 @@
+# =======================
+# RUN-TIME SETTINGS
+# =======================
+
+unit-test:
+  debug: false
+
+#settings used when no run-time arguments are given
+default:
+  project: "Default"
+  browser_mode: chrome     #set to browserstack, headless, firefox, headless-chrome, or chrome (default)
+  environment: default    #see environments.yaml for environments
+  email_catcher: wdiqa1  #email catcher account without @gmail.com
+  time_out: 4           #sets capybara's wait-time for objects to appear
+  wait_before_close: 0  #seconds to wait before closing the test
+  slow_down: 0.5        #seconds to wait for new content to be rendered
+  colored_output: true  #console output
+  error_on_fail: false  #throw a hard error on fail (useful for running from deploy tools)
+  debug: true          #when true, logs debugging info to console

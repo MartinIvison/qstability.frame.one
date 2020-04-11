@@ -1,0 +1,12 @@
+# =======================
+# PRODUCTION
+# =======================
+
+unit-test:
+  value: true
+
+default:
+  frontend_url: vin65developmentautovin65.uswest2.vin65dev.com  #set urls without "http://"
+  verify_age: true    #age verification expected?
+  use_cvv: true       #cvv2 expected?
+  excluded_states:    #comma-separated list of state-names to which the site won't ship (in quotes). E.g. "Utah, Arizona"

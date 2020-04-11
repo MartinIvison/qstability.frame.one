@@ -1,0 +1,10 @@
+.DS_Store
+/tmp/*
+browserstack.err
+local.log
+/settings/config.yaml
+/settings/accounts.yaml
+scratchpad.md
+/.bundle
+.dockerignore
+Dockerfile
