@@ -17,7 +17,8 @@ Write the missing secrets file:
   - Open the new accounts file in the text editor: `nano settings/accounts.yaml`
   - Copy the following content into the file, save and exit:
 
-  ```#unit-test
+```
+  #unit-test
   unit-test:
     value: true
 
@@ -25,7 +26,7 @@ Write the missing secrets file:
   Browserstack:
     key:
     user:
-    ```
+```
 
 ## 3. Run tests
 1. Type `rake test` or `ruby test.rb` (with default suite and default settings)
