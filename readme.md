@@ -1,15 +1,7 @@
 This is a **shell automated test suite** to test against web apps. It is written in Ruby and architected around SitePrism (built on Capybara) and uses Selenium to talk to a variety of web-drivers (Browserstack, Chromedriver etc.).
 
 
-## 1. Docker Installation
-The Docker image contains enough to run the tests against Browserstack, but currently no other drivers or targets (e.g. chromedriver for Chrome, or geckodriver for Firefox).
-1. Pull the docker image from https://hub.docker.com/r/vin65/mvp :
-  - Login: `docker login`
-  - Pull image: `docker pull vin65/mvp:latest`
-  - Start container: `docker run --rm -ti vin65/mvp:latest /bin/bash`
-
-
-## 2. Manual Installation
+## 1. Manual Installation
 1. Clone or download repo.
 2. Run `bundle install`
 3. Run `bundle update`
@@ -18,8 +10,8 @@ At this point you will be able to run the tests in Browserstack, but not in loca
 - Firefox: `brew install geckodriver`
 - Chrome: `brew install chromedriver` (to update: `brew upgrade chromedriver`)
 
-## 3. Create Secrets
-4. Write the missing secrets file:
+## 2. Create Secrets
+Write the missing secrets file:
   - Create the secrets file: `echo >> 'settings/accounts.yaml'`
   - Install a text editor: `apt-get update && \ apt-get -y install nano`
   - Open the new accounts file in the text editor: `nano settings/accounts.yaml`
@@ -35,7 +27,7 @@ At this point you will be able to run the tests in Browserstack, but not in loca
     user:
     ```
 
-## 4. Run tests
+## 3. Run tests
 1. Type `rake test` or `ruby test.rb` (with default suite and default settings)
 2. To specify which test suite to run, modify or create a test suite in `suites`. Then run `ruby test.rb "suite-name"`.
 3. To set specific run settings, like environment and browser-mode, modify or add a named settings block in `settings/settings.yaml` (e.g. 'jenkins')
